@@ -7,11 +7,17 @@
     opts: loop,ro
     state: mounted
 
-- name: Set up union root for post installation tasks
+- name: create work dir for overlayfs
+  ansible.builtin.file:
+    path: "{{ vyos_write_root_workdir }}"
+    state: directory
+
+- name: Set up union overlayfs for post installation tasks
   become: true
   mount:
     name: "{{ vyos_install_root }}"
-    src: none
-    fstype: aufs
-    opts: "noatime,dirs={{ vyos_write_root }}/boot/{{ vyos_version }}/rw=rw:{{ vyos_read_root }}=rr"
+    src: overlay
+    fstype: overlay
+    opts: "lowerdir=noatime,{{ vyos_read_root }},upperdir={{ vyos_write_root }}/boot/{{ vyos_version }}/rw,workdir={{ vyos_write_root_workdir }}"
     state: mounted
+

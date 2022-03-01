@@ -10,7 +10,6 @@
     vyos_output_img: "{{ vyos_vagrant_libvirt_box }}"
   roles:
     - install-packages
-    - load-modules
     - download-iso
     - mount-iso
     - get-version

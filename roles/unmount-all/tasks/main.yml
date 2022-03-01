@@ -16,6 +16,11 @@
     fstype: none
     state: absent
 
+- name: delete work dir for overlayfs
+  ansible.builtin.file:
+    path: "{{ vyos_write_root_workdir }}"
+    state: absent
+
 - name: Unmount {{ vyos_install_root }}
   become: true
   mount:

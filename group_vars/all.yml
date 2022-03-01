@@ -9,6 +9,7 @@ vyos_cd_root: /mnt/cdrom
 vyos_cd_squash_root: /mnt/cdsquash
 vyos_squashfs_image: "{{ vyos_cd_root }}/live/filesystem.squashfs"
 vyos_write_root: /mnt/wroot
+vyos_write_root_workdir: /mnt/wroot/workdir
 vyos_read_root: /mnt/squashfs
 vyos_install_root: /mnt/inst_root
 
