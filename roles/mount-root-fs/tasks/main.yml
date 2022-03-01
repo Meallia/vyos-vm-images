@@ -18,6 +18,6 @@
     name: "{{ vyos_install_root }}"
     src: overlay
     fstype: overlay
-    opts: "lowerdir=noatime,{{ vyos_read_root }},upperdir={{ vyos_write_root }}/boot/{{ vyos_version }}/rw,workdir={{ vyos_write_root_workdir }}"
+    opts: "noatime,lowerdir={{ vyos_read_root }},upperdir={{ vyos_write_root }}/boot/{{ vyos_version }}/rw,workdir={{ vyos_write_root_workdir }}"
     state: mounted
 
